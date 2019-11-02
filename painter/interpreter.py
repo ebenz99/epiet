@@ -42,6 +42,47 @@ class Interpreter():
 				i+=1
 		self.instructions = flatten_list
 
+	def execute(self):
+		r1 = 1
+		r2 = 1
+		r3 = 1
+		acc = 0
+		for instruction in self.instructions:
+			if instruction == "Save R1":
+				r1 = acc
+			elif instruction == "Save R2":
+				r2 = acc
+			elif instruction == "Save R3":
+				r3 = acc
+			elif instruction == "Load R1":
+				acc = r1
+			elif instruction == "Load R2":
+				acc = r2
+			elif instruction == "Load R3":
+				acc = r3
+			elif instruction == "Add":
+				acc = acc + r3
+			elif instruction == "Subtract":
+				acc = acc - r3
+			elif instruction == "Multiply":
+				acc = acc * r3
+			elif instruction == "Divide":
+				acc = acc / r3
+			elif instruction == "Mod":
+				acc = acc % r3
+			elif instruction == "CastToChar":
+				acc = chr(acc)
+			elif instruction == "CastToInt":
+				acc = int(acc)
+			elif instruction == "CastToFloat":
+				acc = float(acc)
+			elif instruction == "Print":
+				print(acc)
+			elif instruction == "Exit":
+				break
+			else:
+				pass
+
 
 realColors = [(255,255,255)]
 realColors = [
@@ -68,6 +109,5 @@ realColors = [
 instructions = ["Save R1","Save R2","Save R3","Load R1","Load R2","Load R3","Add","Subtract","Multiply","Divide","Mod","Exit","CastToChar","CastToInt","CastToFloat","Print","Pass","Pass","Pass","Pass"]
 a = Interpreter("thing.txt",realColors,instructions)
 a.readGrid()
-print(a.instructions)
-
+a.execute()
 
