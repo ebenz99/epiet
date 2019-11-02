@@ -103,6 +103,7 @@ class Interpreter():
 				break
 			else:
 				pass
+			return None
 
 
 # realColors = [
@@ -126,8 +127,8 @@ class Interpreter():
 # 			(0,128,255),
 # 			(153,0,76),
 # 			(255,255,255)]
-instructions = ["Save R1","Save R2","Save R3","Load R1","Load R2","Load R3","Add","Subtract","Multiply","Divide","Mod","Exit","CastToChar","CastToInt","CastToFloat","Print","Pass","Pass","Pass","Pass"]
-a = Interpreter("thing.txt",instructions)
-a.readGrid()
-a.execute()
+# instructions = ["Save R1","Save R2","Save R3","Load R1","Load R2","Load R3","Add","Subtract","Multiply","Divide","Mod","Exit","CastToChar","CastToInt","CastToFloat","Print","Pass","Pass","Pass","Pass"]
+# a = Interpreter("thing.txt",instructions)
+# a.readGrid()
+# a.execute()
 

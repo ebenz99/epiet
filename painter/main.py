@@ -27,6 +27,7 @@ import sys
 import time
 from interpreter import Interpreter
 
+
 sys.setrecursionlimit(1000000)
 
 pygame.init() #initalize pygame
@@ -410,7 +411,8 @@ while run:
                            savedPath = path
                            interp = Interpreter(path,instructions)
                            interp.readGrid()
-                           interp.execute()
+                           mymessage = interp.execute()
+                           #messagebox.showinfo("Output",mymessage)
                            #save(cols, rows, grid.showGrid, grid.getGrid(),savedPath)
                         else:
                           print("THIS IS AN EXIT CODE")
