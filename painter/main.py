@@ -41,7 +41,7 @@ showGrid = True
 
 colorRows = 5
 colorCols = 4
-realColors = [(255,0,0),(255,128,0),(204,204,255),(200,50,200),(0,153,153),(255,204,153),(255,255,0),(30,100,100),(0,255,0),(0,255,255),(70,70,70),(0,128,255),(127,0,255),(255,0,255),(229,255,204),(153,0,76),(255,0,127),(128,128,128),(255,255,255),(0,0,0)]
+realColors = [(255,0,0),(255,128,0),(204,204,255),(200,50,200),(0,153,153),(255,204,153),(255,255,0),(30,100,100),(0,255,0),(0,255,255),(70,70,70),(0,128,255),(127,0,255),(255,0,255),(229,255,204),(153,0,76),(255,0,127),(128,128,128),(50,90,160),(255,255,255)]
 instructions = ["Save R1","Save R2","Save R3","Load R1","Load R2","Load R3","Add","Subtract","Multiply","Divide","Mod","Exit","CastToChar","CastToInt","CastToFloat","Print","Pass","Pass","Pass","Pass"]
 #realPallet = colorPallet(win, 200, 200, colorRows, colorCols, True, 20, grid.height + 2)
 
@@ -71,7 +71,7 @@ def fill(spot, grid, color, c):
          fill(grid.getGrid()[i][j - 1], grid, color, c)
       
 
-# Saves the current project into a text file that contains the size of the screen, if the gird is showing and all the colors of all the pixels
+# saves the current project into a text file that contains the size of the screen, if the gird is showing and all the colors of all the pixels
 def save(cols, rows, show, grid, path):
    if len(path) >= 4: # This just makes sure we have .txt at the end of our file selection
       if path[-4:] != '.txt':
@@ -83,10 +83,21 @@ def save(cols, rows, show, grid, path):
    file = open(path, 'w')
    file.write(str(cols) + ' ' + str(rows) + ' ' + str(show) +'\n')
 
+   rows = [[] for i in range(len(grid[0]))]
+
    for pixel in grid:
-       for p in pixel: #For every pixel write the color in the text file
+       for idx,p in enumerate(pixel): #For every pixel write the color in the text file
+           rows[idx].append(p)
+
+   for row in rows:
+       for p in row:
            wr = str(p.color[0]) + ',' + str(p.color[1]) + ',' + str(p.color[2])
            file.write(wr + '\n')
+
+   # for pixel in grid:
+   #     for p in pixel: #For every pixel write the color in the text file
+   #         wr = str(p.color[0]) + ',' + str(p.color[1]) + ',' + str(p.color[2])
+   #         file.write(wr + '\n')
    file.write(str(currentVersion))
 
    file.close()
@@ -123,7 +134,7 @@ def openFile(path):
                 nColor.append(int(char))
                 
              
-             grid.getGrid()[i][j].show(win, tuple(nColor), 0) #Show the color on the grid
+             grid.getGrid()[j][i].show(win, tuple(nColor), 0) #Show the color on the grid
     else:
       window = Tk()
       window.withdraw()

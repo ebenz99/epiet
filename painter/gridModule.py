@@ -110,14 +110,7 @@ class colorPallet(pixelArt):
             for p in pixels:
                 p.show(self.screen, colorList[colourCount],0)
                 colourCount += 1
-    def setText(self, instructionList): #The instructionList argument passed to the function must be equal to the number of pixels in the grid
-        instCount = 0
 
-        for pixels in self.getGrid():
-            for p in pixels:
-                #p.show(self.screen, colorList[colourCount],0)
-                #p.showText(self.screen, instructionList[instCount])
-                instCount += 1
 
 
 #This class creates basic grid menus that can contain text.
@@ -128,10 +121,10 @@ class menu(grid):
         
         self.grid = []
         # Create textObjects in the grid
-        for i in range(self.cols):
+        for i in range(self.rows):
             self.grid.append([])
-            for j in range(self.rows):
-                self.grid[i].append(textObject(i, j, self.width, self.height, self.cols, self.rows, self.startx, self.starty))
+            for j in range(self.cols):
+                self.grid[i].append(textObject(j, i, self.width, self.height, self.cols, self.rows, self.startx, self.starty))
         #Set the text for each of those objects
         c = 0
         for spots in self.getGrid():
