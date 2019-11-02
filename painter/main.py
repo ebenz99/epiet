@@ -25,6 +25,7 @@ from gridModule import menu
 from gridModule import grid
 import sys
 import time
+from interpreter import Interpreter
 
 sys.setrecursionlimit(1000000)
 
@@ -405,10 +406,11 @@ while run:
                                openFile(path)
                                savedPath = path
                     else:
-                        print("PATH IS")
-                        print(path)
                         if path != "" and path != None:
                            savedPath = path
+                           interp = Interpreter(path,instructions)
+                           interp.readGrid()
+                           interp.execute()
                            #save(cols, rows, grid.showGrid, grid.getGrid(),savedPath)
                         else:
                           print("THIS IS AN EXIT CODE")
