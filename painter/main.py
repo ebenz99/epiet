@@ -226,6 +226,9 @@ def initalize(cols, rows, showGrid=False):
    #colorList = [(0,0,0), (255,255,255), (255,0,0), (0,255,0), (0,0,255), (255,255,0), (255,168,0), (244, 66, 173), (65, 244, 226), (255,168,10), (0, 66, 173), (65, 9, 226)]
    colorList = realColors
    pallet.setColor(colorList)
+   instGrid = menu(win, 270, 170, colorRows, colorCols, True, 50, grid.height+20)
+   instGrid.setText(instructions)
+
    #pallet.setText(instructions)
 
    ########START
@@ -361,6 +364,8 @@ while run:
                         #colorList = [(0,0,0), (255,255,255), (255,0,0), (0,255,0), (0,0,255), (255,255,0), (255,168,0), (244, 66, 173), (65, 244, 226), (255,168,10), (0, 66, 173), (65, 9, 226)]
                         colorList = realColors
                         pallet.setColor(colorList)
+                        instGrid = menu(win, 270, 170, colorRows, colorCols, True, 50, grid.height+20)
+                        instGrid.setText(instructions)
                         clicked.show(grid.screen, (255,0,0), 3, True)
                         
                     elif pos[0] >= lineThickness.startx and pos[0] <= lineThickness.startx + lineThickness.width and pos[1] >= lineThickness.starty and pos[1] <= lineThickness.starty + lineThickness.height:
