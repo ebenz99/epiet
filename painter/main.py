@@ -216,34 +216,37 @@ def initalize(cols, rows, showGrid=False):
 
    #CREATION OF OBJECTS
    #last argument controls spacing from the left
-   grid = pixelArt(win, int(wid)-100, int(heigh)-100, cols, rows, showGrid,40)
+   grid = pixelArt(win, int(wid)-100, int(heigh)-80, cols, rows, showGrid,40)
    grid.drawGrid()
 
-   pallet = colorPallet(win, 300, 200, colorRows, colorCols, True, 20, grid.height + 2)
+   pallet = colorPallet(win, 270, 170, colorRows, colorCols, True, 50, grid.height+20)
    pallet.drawGrid()
 
    #colorList = [(0,0,0), (255,255,255), (255,0,0), (0,255,0), (0,0,255), (255,255,0), (255,168,0), (244, 66, 173), (65, 244, 226), (255,168,10), (0, 66, 173), (65, 9, 226)]
    colorList = realColors
    pallet.setColor(colorList)
 
+   ########START
 
-   tools = menu(win, 200, 40, 5, 1, True, grid.width - 210, grid.height + 50)
-   tools.drawGrid()
+   # tools = menu(win, 200, 40, 5, 1, True, grid.width - 210, grid.height + 50)
+   # tools.drawGrid()
 
-   buttons = ['D', 'E', 'F', 'R', 'C']
-   tools.setText(buttons)
-   tools.drawGrid()
+   # buttons = ['D', 'E', 'F', 'R', 'C']
+   # tools.setText(buttons)
+   # tools.drawGrid()
 
-   l = tools.getGrid()
-   l[0][0].show(grid.screen, (255,0,0),1, True)
+   # l = tools.getGrid()
+   # l[0][0].show(grid.screen, (255,0,0),1, True)
 
-   lineThickness = menu(win, 180, 40, 4, 1, True, grid.width - 200, grid.height + 10)
-   lineThickness.drawGrid()
+   lineThickness = menu(win, 1, 1, 4, 1, True, grid.width, grid.height)
+   # lineThickness.drawGrid()
 
-   buttons = ['1', '2', '3', '4']
-   lineThickness.setText(buttons)
+   # buttons = ['1', '2', '3', '4']
+   # lineThickness.setText(buttons)
 
-   saveMenu = menu(win, 140, 40, 2, 1, True, grid.width - 400, grid.height + 25)
+   ##########END
+
+   saveMenu = menu(win, 230, 100, 3, 1, True, grid.width - 200, grid.height + 25)
    saveMenu.drawGrid()
 
    buttons = ['Save', 'Open', 'Run']
@@ -315,39 +318,41 @@ while run:
             try:
                 pos = pygame.mouse.get_pos()
                 if pos[1] >= grid.height: # If the mouse is below the main drawing grid
-                    if pos[0] >= tools.startx and pos[0] <= tools.startx + tools.width and pos[1] >= tools.starty and pos[1] <+ tools.starty + tools.height: #If the mouse ic clicking on the tools grid
-                        replace = False
-                        doFill = False
-                        tools.drawGrid() #Redraw the grid so that we dont see the red highlight
-                        buttons = ['D', 'E', 'F', 'R', 'C']
-                        tools.setText(buttons)
+                    pass
+                    ###START
+                    # if pos[0] >= tools.startx and pos[0] <= tools.startx + tools.width and pos[1] >= tools.starty and pos[1] <+ tools.starty + tools.height: #If the mouse ic clicking on the tools grid
+                    #     replace = False
+                    #     doFill = False
+                    #     tools.drawGrid() #Redraw the grid so that we dont see the red highlight
+                    #     buttons = ['D', 'E', 'F', 'R', 'C']
+                    #     tools.setText(buttons)
                         
-                        clicked = tools.clicked(pos)
-                        clicked.show(grid.screen, (255,0,0), 1, True)
+                    #     clicked = tools.clicked(pos)
+                    #     clicked.show(grid.screen, (255,0,0), 1, True)
 
-                        #Depending what tool they click
-                        if clicked.text == 'D': #Draw tool  
-                            color = (0,0,0)
-                        elif clicked.text == 'E': #Erase tool
-                            color = (255,255,255)
-                        elif clicked.text == 'F':# Fill tool
-                            doFill = True
-                        elif clicked.text == 'R':# Replace tool
-                            replace = True
-                        elif clicked.text == 'C':# Clear grid tool
-                            grid.clearGrid()
-                            tools.drawGrid() #Redraw the grid so that we dont see the red highlight
-                            buttons = ['D', 'E', 'F', 'R', 'C']
-                            tools.setText(buttons)
-                            l = tools.getGrid()
-                            l[0][0].show(grid.screen, (255,0,0),1, True)
-                            
+                    #     #Depending what tool they click
+                    #     if clicked.text == 'D': #Draw tool  
+                    #         color = (0,0,0)
+                    #     elif clicked.text == 'E': #Erase tool
+                    #         color = (255,255,255)
+                    #     elif clicked.text == 'F':# Fill tool
+                    #         doFill = True
+                    #     elif clicked.text == 'R':# Replace tool
+                    #         replace = True
+                    #     elif clicked.text == 'C':# Clear grid tool
+                    #         grid.clearGrid()
+                    #         tools.drawGrid() #Redraw the grid so that we dont see the red highlight
+                    #         buttons = ['D', 'E', 'F', 'R', 'C']
+                    #         tools.setText(buttons)
+                    #         l = tools.getGrid()
+                    #         l[0][0].show(grid.screen, (255,0,0),1, True)
+                    #####END
                     #If they click on the color pallet
-                    elif pos[0] >= pallet.startx and pos[0] <= pallet.startx + pallet.width and pos[1] >= pallet.starty and pos[1] <= pallet.starty + pallet.height:
+                    if pos[0] >= pallet.startx and pos[0] <= pallet.startx + pallet.width and pos[1] >= pallet.starty and pos[1] <= pallet.starty + pallet.height:
                         clicked = pallet.clicked(pos)
                         color = clicked.getColor() # Set current drawing color
 
-                        pallet = colorPallet(win, 300, 200, colorRows, colorCols, True, 20, grid.height + 2)
+                        pallet = colorPallet(win, 270, 170, colorRows, colorCols, True, 50, grid.height+20)
                         pallet.drawGrid()
 
                         #colorList = [(0,0,0), (255,255,255), (255,0,0), (0,255,0), (0,0,255), (255,255,0), (255,168,0), (244, 66, 173), (65, 244, 226), (255,168,10), (0, 66, 173), (65, 9, 226)]
@@ -365,8 +370,9 @@ while run:
 
                         thickness = int(clicked.text) # set line thickness
 
-                    #If they click on the save menu 
-                    elif pos[0] >= saveMenu.startx and pos[0] <= saveMenu.startx + saveMenu.width and pos[1] >= saveMenu.starty and pos[1] <= saveMenu.starty + saveMenu.height:
+                    #If they click on the save menu
+
+                    elif pos[0] >= saveMenu.startx and pos[0] <= saveMenu.startx + saveMenu.width/3 and pos[1] >= saveMenu.starty and pos[1] <= saveMenu.starty + saveMenu.height:
                         clicked = saveMenu.clicked(pos)
 
                         if clicked.text == 'Save': # save if they click save
@@ -374,21 +380,28 @@ while run:
                             if path:
                                savedPath = path
                                save(cols, rows, grid.showGrid, grid.getGrid(),savedPath)
-                        else: #otherwise open
+                    elif pos[0] >= saveMenu.startx + saveMenu.width/3 and pos[0] <= saveMenu.startx + 2*saveMenu.width/3 and pos[1] >= saveMenu.starty and pos[1] <= saveMenu.starty + saveMenu.height:
                             path = showFileNav(True)
                             if path:
                                openFile(path)
                                savedPath = path
-                              #open file
+                    else:
+                        path = showFileNav()
+                        if path:
+                           savedPath = path
+                           print(savedPath)
+                           save(cols, rows, grid.showGrid, grid.getGrid(),savedPath)
 
                             
                 else:
                     if replace: #If we have the replace tool selected then replace the color
-                        tools.drawGrid() #Redraw the grid so that we dont see the red highlight
-                        buttons = ['D', 'E', 'F', 'R', 'C']
-                        tools.setText(buttons)
+                        ###START
+                        # tools.drawGrid() #Redraw the grid so that we dont see the red highlight
+                        # buttons = ['D', 'E', 'F', 'R', 'C']
+                        # tools.setText(buttons)
                         
-                        tools.getGrid()[0][0].show(grid.screen, (255,0,0), 1, True)
+                        # tools.getGrid()[0][0].show(grid.screen, (255,0,0), 1, True)
+                        ###END
 
                         clicked = grid.clicked(pos)
                         c = clicked.color
