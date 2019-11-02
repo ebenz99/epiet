@@ -1,3 +1,5 @@
+from tkinter import messagebox
+
 class Interpreter():
 
 	def __init__(self,fname,instructions,nrows=30,ncols=30):
@@ -99,6 +101,7 @@ class Interpreter():
 				acc = float(acc)
 			elif instruction == "Print":
 				print(acc)
+				messagebox.showinfo("output",str(acc))
 			elif instruction == "Exit":
 				break
 			else:

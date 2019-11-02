@@ -25,7 +25,7 @@ from gridModule import menu
 from gridModule import grid
 import sys
 import time
-from interpreter import Interpreter
+from interpreterModule import Interpreter
 
 
 sys.setrecursionlimit(1000000)
@@ -47,6 +47,7 @@ realColors = [(255,0,0),(255,128,0),(204,204,255),(200,50,200),(0,153,153),(255,
 instructions = ["Save R1","Save R2","Save R3","Load R1","Load R2","Load R3","Add","Subtract","Multiply","Divide","Mod","Exit","CastToChar","CastToInt","CastToFloat","Print","Pass","Pass","Pass","Pass"]
 #realPallet = colorPallet(win, 200, 200, colorRows, colorCols, True, 20, grid.height + 2)
 
+#instructions = ["Save R1","Load R3","Divide","CastToInt","Pass","Save R2","Add","Mod","CastToFloat","Save R3","Subtract","Exit","Print","Pass","Load R1","Multiply","CastToChar","Pass","Pass","Load R2"]
 
 
 
@@ -240,7 +241,7 @@ def initalize(cols, rows, showGrid=False):
    colorList = realColors
    pallet.setColor(colorList)
    instGrid = menu(win, 270, 170, colorRows, colorCols, True, 50, grid.height+20)
-   instGrid.setText(instructions)
+   instGrid.setCMDText(instructions)
 
    #pallet.setText(instructions)
 
@@ -378,7 +379,7 @@ while run:
                         colorList = realColors
                         pallet.setColor(colorList)
                         instGrid = menu(win, 270, 170, colorRows, colorCols, True, 50, grid.height+20)
-                        instGrid.setText(instructions)
+                        instGrid.setCMDText(instructions)
                         clicked.show(grid.screen, (255,0,0), 3, True)
                         
                     elif pos[0] >= lineThickness.startx and pos[0] <= lineThickness.startx + lineThickness.width and pos[1] >= lineThickness.starty and pos[1] <= lineThickness.starty + lineThickness.height:
