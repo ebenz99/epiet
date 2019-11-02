@@ -42,6 +42,7 @@ showGrid = True
 colorRows = 5
 colorCols = 4
 realColors = [(255,0,0),(255,128,0),(204,204,255),(200,50,200),(0,153,153),(255,204,153),(255,255,0),(30,100,100),(0,255,0),(0,255,255),(70,70,70),(0,128,255),(127,0,255),(255,0,255),(229,255,204),(153,0,76),(255,0,127),(128,128,128),(255,255,255),(0,0,0)]
+instructions = ["Save R1","Save R2","Save R3","Load R1","Load R2","Load R3","Add","Subtract","Multiply","Divide","Mod","Exit","CastToChar","CastToInt","CastToFloat","Print","Pass","Pass","Pass","Pass"]
 #realPallet = colorPallet(win, 200, 200, colorRows, colorCols, True, 20, grid.height + 2)
 
 
@@ -145,7 +146,7 @@ def showFileNav(op=False):
        filename = askopenfilename(title="Open File",filetypes=myFormats) # Ask the user which file they want to open
     else:
        filename = asksaveasfilename(title="Save File",filetypes=myFormats) # Ask the user choose a path to save their file to
-       
+
     if filename: #If the user seletced something 
        x = filename[:] # Make a copy
        return x
@@ -225,6 +226,7 @@ def initalize(cols, rows, showGrid=False):
    #colorList = [(0,0,0), (255,255,255), (255,0,0), (0,255,0), (0,0,255), (255,255,0), (255,168,0), (244, 66, 173), (65, 244, 226), (255,168,10), (0, 66, 173), (65, 9, 226)]
    colorList = realColors
    pallet.setColor(colorList)
+   #pallet.setText(instructions)
 
    ########START
 
@@ -293,6 +295,7 @@ doFill = False
 savedPath = '' #Current path of file
 
 run = True
+path = ""
 while run:
     #Main loop for mouse collision
     ev = pygame.event.get()
@@ -309,7 +312,7 @@ while run:
                      save(cols, rows, grid.showGrid, grid.getGrid(),savedPath)
                   else:
                      path = showFileNav()
-                     if path:
+                     if path != "" and path != None:
                         savedPath = path
                         save(cols, rows, grid.showGrid, grid.getGrid(),savedPath)
             run = False
@@ -377,20 +380,23 @@ while run:
 
                         if clicked.text == 'Save': # save if they click save
                             path = showFileNav()
-                            if path:
+                            if path != "" and path != None:
                                savedPath = path
                                save(cols, rows, grid.showGrid, grid.getGrid(),savedPath)
                     elif pos[0] >= saveMenu.startx + saveMenu.width/3 and pos[0] <= saveMenu.startx + 2*saveMenu.width/3 and pos[1] >= saveMenu.starty and pos[1] <= saveMenu.starty + saveMenu.height:
                             path = showFileNav(True)
-                            if path:
+                            if path != "" and path != None:
                                openFile(path)
                                savedPath = path
                     else:
-                        path = showFileNav()
-                        if path:
+                        print("PATH IS")
+                        print(path)
+                        if path != "" and path != None:
                            savedPath = path
-                           print(savedPath)
-                           save(cols, rows, grid.showGrid, grid.getGrid(),savedPath)
+                           #save(cols, rows, grid.showGrid, grid.getGrid(),savedPath)
+                        else:
+                          print("THIS IS AN EXIT CODE")
+                          exit(1)
 
                             
                 else:
