@@ -46,7 +46,7 @@ colorCols = 4
 realColors = [(255,0,0),(255,128,0),(204,204,255),(200,50,200),(0,153,153),(255,204,153),(255,255,0),(30,100,100),(0,255,0),(0,255,255),(70,70,70),(0,128,255),(127,0,255),(255,0,255),(229,255,204),(153,0,76),(255,0,127),(128,128,128),(50,90,160),(255,255,255)]
 # instructions = ["Save R1","Save R2","Save R3","Load R1","Load R2","Load R3","Add","Subtract","Multiply","Divide","Mod","Exit","CastToChar","CastToInt","CastToFloat","Print","Pass","Pass","Pass","Pass"]
 #realPallet = colorPallet(win, 200, 200, colorRows, colorCols, True, 20, grid.height + 2)
-instructions = ["Save R1","Save R2","Save R3","Load R1","Load R2","Load R3","Add","Subtract","Multiply","Divide","Mod","Exit","CastToChar","CastToInt","CastToFloat","Print","strPrint","strAppend","strClear","Pass"]
+instructions = ["Save R1","Save R2","Save R3","Load R1","Load R2","Load R3","Add","Subtract","Multiply","Divide","Mod","Exit","CastToChar","CastToInt","Pass","Print","strPrint","strAppend","strClear","Pass"]
 
 #instructions = ["Save R1","Load R3","Divide","CastToInt","Pass","Save R2","Add","Mod","CastToFloat","Save R3","Subtract","Exit","Print","Pass","Load R1","Multiply","CastToChar","Pass","Pass","Load R2"]
 
