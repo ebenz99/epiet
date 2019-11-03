@@ -11,7 +11,7 @@ class Interpreter():
 			(0,255,0),
 			(127,0,255),
 			(255,0,127),		#5
-			(255,204,153),
+			(255,128,0),
 			(255,204,153),
 			(0,255,255),
 			(255,0,255),
@@ -70,6 +70,7 @@ class Interpreter():
 		r2 = 1
 		r3 = 1
 		acc = 0
+		strReg = ""
 		for instruction in self.instructions:
 			if instruction == "Save R1":
 				r1 = acc
@@ -90,20 +91,30 @@ class Interpreter():
 			elif instruction == "Multiply":
 				acc = acc * r3
 			elif instruction == "Divide":
-				acc = acc / r3
+				acc = acc // r3
 			elif instruction == "Mod":
 				acc = acc % r3
 			elif instruction == "CastToChar":
 				acc = chr(acc)
 			elif instruction == "CastToInt":
-				acc = int(acc)
+				acc = ord(acc)
 			elif instruction == "CastToFloat":
-				acc = float(acc)
+				try:
+					acc = float(acc)
+				except:
+					pass
 			elif instruction == "Print":
 				print(acc)
 				messagebox.showinfo("output",str(acc))
 			elif instruction == "Exit":
 				break
+			elif instruction == "strPrint":
+				print(strReg)
+				messagebox.showinfo("output",str(strReg))
+			elif instruction == "strAppend":
+				strReg += acc
+			elif instruction == "strClear":
+				strReg = ""
 			else:
 				pass
 		return None
