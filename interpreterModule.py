@@ -112,6 +112,8 @@ class Interpreter():
 				print(strReg)
 				messagebox.showinfo("output",str(strReg))
 			elif instruction == "strAppend":
+				print("acc is")
+				print(acc)
 				strReg += acc
 			elif instruction == "strClear":
 				strReg = ""
