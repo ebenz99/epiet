@@ -15,3 +15,13 @@ with open("filler.txt","r") as f:
 		nvals.append(tuple(line.rstrip().split(",")))
 	nend = nvals[-1]
 	nvals = nvals[:-1]
+
+
+idx = 0
+for i in range(0,len(nvals)):
+	if nvals[i] != (50,90,160):
+		nvals[i] = vals[idx]
+		idx += 1
+
+with open("nf.txt","r") as f:
+	
