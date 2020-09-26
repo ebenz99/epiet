@@ -104,16 +104,12 @@ class Interpreter():
 				except:
 					pass
 			elif instruction == "Print":
-				print(acc)
 				messagebox.showinfo("output",str(acc))
 			elif instruction == "Exit":
 				break
 			elif instruction == "strPrint":
-				print(strReg)
 				messagebox.showinfo("output",str(strReg))
 			elif instruction == "strAppend":
-				print("acc is")
-				print(acc)
 				strReg += acc
 			elif instruction == "strClear":
 				strReg = ""

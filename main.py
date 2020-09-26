@@ -14,7 +14,7 @@ import time
 sys.setrecursionlimit(1000000)
 
 pygame.init() #initalize pygame
-paintBrush = pygame.image.load("imgs/Paintbrush.png")
+paintBrush = pygame.image.load("src_imgs/Paintbrush.png")
 currentVersion = 1.1
 
 #Set defaults for our screen size and rows and columns

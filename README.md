@@ -4,7 +4,7 @@ A programming language for the artistically and assembly-language inclined.
 
 ## VANDYHACKS VI - ART
 
-This was originally a project I took on at Vandyhacks VI for their art theme. With Python 3.8.3 and the pygame version listed in the `requirements.txt` file, this should work. For a demo, I'd recommend using the IDE to open `demoInput.txt` and running that.
+This was originally a project I took on at Vandyhacks VI for their art theme. With Python 3.8.3 and the pygame version listed in the `requirements.txt` file, this should work. For a demo, I'd recommend using the IDE to open `paintings/demoInput.txt` and running that. If you have any questions or would like to collaborate, feel free to reach out: ebensma@clemson.edu
 
 ## How to use (PLEASE READ)
 
