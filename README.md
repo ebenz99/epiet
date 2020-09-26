@@ -1,10 +1,10 @@
 # Epiet
 
-A programming language for the artistically and assembly-language inclined
+A programming language for the artistically and assembly-language inclined.
 
 ## VANDYHACKS VI - ART
 
-This was originally a project I took on at Vandyhacks VI for their art theme I'm looking to try to get this controlled for Python version, but with Python 3.8.3 and the pygame version listed in the `requirements.txt` file, this should work. For a demo, I'd recommend using the IDE to open `demoInput.txt` and running that.
+This was originally a project I took on at Vandyhacks VI for their art theme. With Python 3.8.3 and the pygame version listed in the `requirements.txt` file, this should work. For a demo, I'd recommend using the IDE to open `demoInput.txt` and running that.
 
 ## How to use (PLEASE READ)
 
@@ -36,3 +36,6 @@ The direction of interpretation is a `snake` starting from the top left. It read
 
 ## Issues
 * Currently, there's a bug where once a program is run, the remains in `select` mode and must be clicked again to de-select.
+
+## Credit
+My apologies that this isn't great, it was made in about 36 hours. For the good parts (mainly the painting UI), credit to https://github.com/techwithtim/Python-Drawing-Program. And obviously, the original Piet (that this attempts to replicate) is the G.O.A.T.
