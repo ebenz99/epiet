@@ -2,20 +2,19 @@ import pygame
 from tkinter import *
 from tkinter import messagebox
 from tkinter.filedialog import askopenfilename, asksaveasfilename
-import gridModule
-from gridModule import colorPallet
-from gridModule import pixelArt
-from gridModule import menu
-from gridModule import grid
+from painterModules.gridModule import colorPallet
+from painterModules.gridModule import pixelArt
+from painterModules.gridModule import menu
+from painterModules.gridModule import grid
+from painterModules.interpreterModule import Interpreter
 import sys
 import time
-from interpreterModule import Interpreter
 
 
 sys.setrecursionlimit(1000000)
 
 pygame.init() #initalize pygame
-paintBrush = pygame.image.load("Paintbrush.png")
+paintBrush = pygame.image.load("imgs/Paintbrush.png")
 currentVersion = 1.1
 
 #Set defaults for our screen size and rows and columns
