@@ -20,7 +20,7 @@ One of the main differences are the instruction sets. Epiet's instructions are c
 
 Looking back, I'm the first to admit the interpretation of this language is far from intuitive. Looking at the `execute` function in `painterModules/interpreterModule.py` is probably the best way to get a clear sense of what's going on with the instructions. There are three registers (r1, r2, and r3), along with one accumulator that is the destination for loaded values. There's also a stringRegister, which can be used as a buffer for printing to the screen.
 
-The direction of interpretation is a `snake` starting from the top left. It reads in the first row from left to right, the second from right to left, the third from left to right, and so on. Programs are saved as txt files with lists of pixel values
+The direction of interpretation is a `snake` starting from the top left. It reads in the first row from left to right, the second from right to left, the third from left to right, and so on. New instructions are only read upon a **change** in color, making the pass statements imperative for calling the same operation more than once in a row. Programs are saved as txt files with lists of pixel values.
 
 ### Instruction Types
 
@@ -31,8 +31,9 @@ The direction of interpretation is a `snake` starting from the top left. It read
 * __Print__ - prints the accumulator to the screen
 * __StrPrint__ - prints the stringRegister to the screen
 * __StrAppend__ - appends a stringified version of the accumulator to the value in the stringRegister
-* __strClear__ - clears the stringRegister
-* __exit__  - ends the program. Anything you draw in the spaces after the exit statement will not be interpreted
+* __StrClear__ - clears the stringRegister
+* __Pass__ - no action is taken
+* __Exit__  - ends the program. Anything you draw in the spaces after the exit statement will not be interpreted
 
 ## Issues
 * Currently, there's a bug where once a program is run, the remains in `select` mode and must be clicked again to de-select.
