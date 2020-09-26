@@ -30,20 +30,20 @@ class grid(object):
 
         self.screen = win
         pygame.display.update()
-                    
+
     def getGrid(self):
         return self.grid #Return the grid list
 
     def drawGrid(self, lineColor=(0,0,0)): #This will draw the lines to create the grid, this is done so by simply creating overlapping boxes
         x = self.startx
         y = self.starty
-        
+
         for i in range(self.cols):
             y = self.starty + self.height
             if i > 0:
                 x += (self.width / self.cols)
             for j in range(self.rows):
-                y -= self.height / self.rows 
+                y -= self.height / self.rows
                 pygame.draw.rect(self.screen, (0,0,0),(x, y, self.width / self.cols, self.height/ self.rows), 1)
 
     def clicked(self, pos): #Return the position in the grid that user clicked on
@@ -56,7 +56,7 @@ class grid(object):
             self.selected = self.grid[g1][g2]
 
             return self.grid[g1][g2]
-        
+
         except IndexError: #If we run into an index error that means that the user did not click on a position in the grid
             return False
 
@@ -69,7 +69,7 @@ class grid(object):
 #full of pixel objects. It still contains the methods from the aboce class
 #has its own specific clearGrid(). Using ____.clearGrid() will simply set the color
 #to the original background color.
-class pixelArt(grid):  
+class pixelArt(grid):
     def drawGrid(self):
         self.grid = []
         # Create pixels in the grid
@@ -80,15 +80,15 @@ class pixelArt(grid):
                 self.grid[i][j].show(self.screen, (255,255,255), self.lineThick)
                 if self.showGrid:
                     self.grid[i][j].show(self.screen, (0,0,0), 1,False,True)
-                    
+
         #This generates the neighbours of each pixel so that we can draw multiple thickness of lines
         for c in range(self.cols):
             for r in range(self.rows):
                 self.grid[c][r].getNeighbors(self.grid)
-        
+
         self.selected = self.grid[self.cols - 1][self.rows - 1]
 
-        
+
     def clearGrid(self): #This will set all of the pixels to the same color as the background color
         for pixels in self.grid:
             for p in pixels:
@@ -117,7 +117,7 @@ class colorPallet(pixelArt):
 #The setText method takes a list of strings and displays them in the grid.
 class menu(grid):
     def setText(self, textList): #The textList argument passed must be equal to the number of spots in the grid
-        
+
         self.grid = []
         # Create textObjects in the grid
         for i in range(self.cols):
@@ -132,7 +132,7 @@ class menu(grid):
                 c += 1
 
     def setCMDText(self, textList): #The textList argument passed must be equal to the number of spots in the grid
-        
+
         self.grid = []
         # Create textObjects in the grid
         for i in range(self.cols):
@@ -151,8 +151,8 @@ class menu(grid):
 
 
 
-                 
-#This class is responsible for displaying text and these objects are added into the grid.               
+
+#This class is responsible for displaying text and these objects are added into the grid.
 #The showText() method will display the text while the show() method will draw a square showing thr grid.
 class textObject():
     def __init__(self, i, j, width, height, cols, rows, startx=0, starty=0):
@@ -165,14 +165,14 @@ class textObject():
         self.x = self.col * self.w + startx
         self.y = self.row * self.h + starty
         self.text = ''
-    
+
     def showText(self, win, txt): #This will render and draw the text on the screen
         self.text = txt
-        myFont = pygame.font.SysFont('comicsansms', 15)
+        myFont = pygame.font.SysFont('comicsansms', 10)
         text = myFont.render(self.text, 1, (0,0,0))
         win.blit(text, (self.x + (self.w /2 - text.get_width() / 2), self.y + (self.h/2 - text.get_height() / 2))) #This will make sure the text is center in the screen.
 
-    def show(self, screen, color, st, outline=False): #Draws a square displaying the area in the grid  
+    def show(self, screen, color, st, outline=False): #Draws a square displaying the area in the grid
         pygame.draw.rect(screen, color, (self.x, self.y, self.w, self.h), st)
 
 
@@ -190,16 +190,16 @@ class pixel():
         self.h = height / rows
         self.x = self.col * self.w + startx
         self.y = self.row * self.h + starty
-        self.neighbors = [] 
-        
+        self.neighbors = []
+
     def show(self, screen, color, st, outline=False, first=False): #Display the current pixel
         if not(first):
             self.color = color
-            
+
         pygame.draw.rect(screen, color, (self.x, self.y, self.w, self.h), st)
         if self.showGrid and not(outline):
             pygame.draw.rect(screen, (0,0,0), (self.x, self.y, self.w, self.h), 1)
-        
+
     def getPos(self):
         return (self.col * self.w, self.row * self.h)#Return a tuple (x,y) of the top left co-ords of the pixel
 
@@ -227,8 +227,8 @@ class pixel():
         if j > 0 : #Down
             self.neighbors.append(grid[i][j - 1])
 
-            
-        #Diagonal neighbors  
+
+        #Diagonal neighbors
         if j > 0 and i > 0: #Top Left
             self.neighbors.append(grid[i - 1][j - 1])
 
@@ -237,13 +237,9 @@ class pixel():
 
         if j - 1 < rows and i < cols - 1 and j - 1 > 0: #Top Right
             self.neighbors.append(grid[i + 1][j - 1])
-            
+
         if j < rows - 1 and i < cols - 1: #Bottom Right
             self.neighbors.append(grid[i + 1][j + 1])
-        
+
     def neighborsReturn(self):
         return self.neighbors #Return a list of the neighbours of the current pixel
-
-        
-
-
